@@ -1,0 +1,38 @@
+##
+## Git Ignore Rules for Customer Support Agent
+##
+## Purpose:
+## - Exclude build artifacts, caches, local environment files, and IDE metadata.
+##
+## Author: Ebube Imoh
+## Last Modified: 2025-11-19
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+venv/
+env/
+.env
+.env.*
+.DS_Store
+.pytest_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.idea/
+.vscode/
+*.log
+*.pyd
+*.so

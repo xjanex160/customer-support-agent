@@ -1,0 +1,99 @@
+##
+## Toolbox Configuration (tools.yaml)
+##
+## Purpose:
+## - Define external data sources and tools available to the support agent.
+##
+## Author: Ebube Imoh
+## Last Modified: 2025-11-19
+##
+## Dependencies & Requirements:
+## - Environment variables for credentials and endpoints (DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, REDIS_ADDRESS)
+## - PostgreSQL database and Redis instance available to the MCP server.
+##
+## Security Considerations:
+## - Secrets are sourced from environment variables; do not commit plaintext credentials.
+## - Ensure DB queries are parameterized to mitigate injection risks.
+##
+## Performance Considerations:
+## - Limit result sets to reduce payload size (e.g., recent orders limited to 10).
+## - Redis cache used for repeated queries.
+
+sources:
+  support-postgres:
+    kind: postgres
+    host: ${DB_HOST}
+    port: ${DB_PORT}
+    database: ${DB_NAME}
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+  support-redis:
+    kind: redis
+    address:
+      - ${REDIS_ADDRESS}
+
+tools:
+  recent-orders:
+    kind: postgres-sql
+    source: support-postgres
+    description: >
+      Fetch the 10 most recent orders for a customer by id.
+    # Returns small, time-ordered rowset for responsiveness
+    parameters:
+      - name: customer_id
+        type: string
+        description: The customer id to filter by.
+    statement: >
+      SELECT * FROM orders WHERE customer_id = $1 ORDER BY created_at DESC LIMIT 10;
+
+  customer-profile:
+    kind: postgres-sql
+    source: support-postgres
+    description: >
+      Fetch customer profile details by id.
+    # Single-record lookup using parameterized query
+    parameters:
+      - name: customer_id
+        type: string
+        description: The customer id to look up.
+    statement: >
+      SELECT * FROM customers WHERE id = $1;
+
+  redis-get-cache:
+    kind: redis
+    source: support-redis
+    description: Retrieve a cached value by key.
+    # Returns nil when key is absent
+    commands:
+      - [GET, $key]
+    parameters:
+      - name: key
+        type: string
+        description: Cache key to fetch.
+
+  redis-set-cache:
+    kind: redis
+    source: support-redis
+    description: Cache a string value with an expiration time in seconds.
+    # TTL defaults to 3600 seconds; adjust for workload characteristics
+    commands:
+      - [SETEX, $key, $ttl, $value]
+    parameters:
+      - name: key
+        type: string
+        description: Cache key to set.
+      - name: value
+        type: string
+        description: Cache value to store.
+      - name: ttl
+        type: integer
+        description: Time to live in seconds.
+        default: 3600
+
+toolsets:
+  support-toolset:
+    - recent-orders
+    - customer-profile
+    - redis-get-cache
+    - redis-set-cache
